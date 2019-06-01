@@ -12,8 +12,9 @@ function init() {
 }
 
 function checkName() {
-    var userName = document.getElementById("inputName").value; //saving the name in a local variable
-
+    userName = document.getElementById("inputName").value; //saving the name in a global variable.
+    //is global because "endRegistration()" need to know the userName
+    
     if(userName.length < 1) {
         document.getElementById("invalidName").classList.remove("invisible"); //displaying error message
     }
@@ -41,5 +42,9 @@ function endRegistration() {
         localStorage.setItem("userWallet", userWallet);
         
         document.getElementById("app").classList.remove("invisible");
+
+        //displaying user data in the header
+        document.getElementById("userNameHeader").textContent = userName; 
+        document.getElementById("userWalletHeader").textContent = userWallet + "€";
     }
 }
