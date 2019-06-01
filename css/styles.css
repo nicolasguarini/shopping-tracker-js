@@ -1,0 +1,15 @@
+/* General CSS */
+body{
+    text-align: center;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.invisible {
+    visibility: hidden !important;
+    position: absolute !important;
+    top: -9999px !important;
+}

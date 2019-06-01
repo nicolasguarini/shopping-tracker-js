@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Hello, world!</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- My custom CSS -->
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- My custom JS -->
+        <script src="js/init.js"></script>
+        
+    </head>
+
+    <body onload="init();">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Shopping Tracker</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Shopping Tracker</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- User registration-->
+        <div class="init container invisible" id="userRegistration">
+            <!-- Requiring the name -->
+            <div id="enterName"> 
+                <h3 style="padding-top: 40px;">Hi! <br> <br> Enter your name: <br> <br> </h3>
+
+                <div class="alert alert-danger invisible" role="alert" id="invalidName" style="max-width: 500px; margin: auto; margin-bottom: 15px;">
+                    Enter a valid name!
+                </div>
+
+                <input type="text" class="form-control" id="inputName" placeholder="Enter you're name here" style="max-width: 500px; margin: auto;">
+                <button type="button" class="btn btn-dark" style="margin-top: 20px;" onclick="checkName();">Avanti</button>
+            </div>
+
+            <!-- Requiring the wallet -->
+            <div id="enterWallet" class="invisible"> 
+                <h3 style="padding-top: 40px;">Hi, <span id="userNameWallet"></span> <br> <br> Enter your actual wallet: <br> <br> </h3>
+
+                <div class="alert alert-danger invisible" role="alert" id="invalidWallet" style="max-width: 500px; margin: auto; margin-bottom: 15px;">
+                        Enter a valid name!
+                </div>
+
+                <div class="input-group mb-2" style="max-width: 500px; margin: auto;">
+                    <input type="number" class="form-control" id="inputWallet" placeholder="Enter you're wallet">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">€</div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark" style="margin-top: 20px;" onclick="endRegistration();">Avanti</button>
+            </div>
+        </div>
+
+        <div class="app container invisible" id="app">
+            <h3 style="padding-top: 20px;">Hi, <span id="userNameHeader"></span> </h3>
+            <h1 id="userWalletHeader"></h1>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <!-- My custom JS -->
+        <script src="js/app.js"></script>
+    </body>
+</html>
