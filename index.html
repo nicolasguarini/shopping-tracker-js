@@ -69,9 +69,64 @@
         </div>
 
         <!-- Main application -->
-        <div class="app container invisible" id="app">
+        <div class="app invisible" id="app">
             <h3 style="padding-top: 20px;">Hi, <span id="userNameHeader"></span> </h3>
             <h1 id="userWalletHeader"></h1>
+            
+            <div class="actions">
+
+                <button type="button" class="btn btn-danger" style="margin: 20px;" data-toggle="modal" data-target="#makeTransactionModal">
+                    Make transaction
+                </button> 
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMoneyModal">
+                    Add money to the wallet
+                </button>
+                
+                            
+            </div>
+        </div>
+
+        <!-- Make transaction modal -->
+        <div class="modal fade" id="makeTransactionModal" tabindex="-1" role="dialog" aria-labelledby="makeTransactionModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="makeTransactionModalTitle">Make transaction</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add money modal -->
+        <div class="modal fade" id="addMoneyModal" tabindex="-1" role="dialog" aria-labelledby="addMoneyModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addMoneyModalTitle">Add money to the wallet</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Optional JavaScript -->
