@@ -87,6 +87,7 @@
             </div>
         </div>
 
+        <!-- MODALS -->
         <!-- Make transaction modal -->
         <div class="modal fade" id="makeTransactionModal" tabindex="-1" role="dialog" aria-labelledby="makeTransactionModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -118,12 +119,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
                     <div class="modal-body">
-                        ...
+                        <div class="alert alert-danger invisible" role="alert" id="invalidAddMoney">
+                            Enter a valid amount of money!
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="number" class="form-control" id="inputAddMoney" placeholder="Amount of money to add">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">€</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" onclick="checkAddMoney();">Save changes</button>
                     </div>
                 </div>
             </div>

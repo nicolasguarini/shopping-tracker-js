@@ -30,7 +30,7 @@ function checkName() {
 }
 
 function endRegistration() {
-    var userWallet = document.getElementById("inputWallet").value;
+    var userWallet = parseFloat(document.getElementById("inputWallet").value);
 
     if(!userWallet || userWallet < 0){
         document.getElementById("invalidWallet").classList.remove("invisible");
