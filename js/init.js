@@ -1,7 +1,10 @@
 function init() {
     var userName = localStorage.getItem("userName");
     var userWallet = localStorage.getItem("userWallet");
+    var numberOfPayments = localStorage.getItem("numberOfPayments");
     var userRegistrationElement = document.getElementById("userRegistration");
+    
+    if(!numberOfPayments) localStorage.setItem("numberOfPayments", 0);
 
     if(userName && userWallet) { //going straight to the app bypassing the registration
         userRegistrationElement.classList.add("invisible");
