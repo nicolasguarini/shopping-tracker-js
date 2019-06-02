@@ -1,25 +1,26 @@
 function init() {
     var userName = localStorage.getItem("userName");
     var userWallet = localStorage.getItem("userWallet");
+    var userRegistrationElement = document.getElementById("userRegistration");
 
     if(userName && userWallet) { //going straight to the app bypassing the registration
-        document.getElementById("userRegistration").classList.add("invisible");
+        userRegistrationElement.classList.add("invisible");
         document.getElementById("app").classList.remove("invisible");
     }
     else{
-        document.getElementById("userRegistration").classList.remove("invisible");
+        userRegistrationElement.classList.remove("invisible");
     }
 }
 
 function checkName() {
-    userName = document.getElementById("inputName").value; //saving the name in a global variable.
-    //is global because "endRegistration()" need to know the userName
+    var userName = document.getElementById("inputName").value;
+    var invalidNameMessage = document.getElementById("invalidName");
     
     if(userName.length < 1) {
-        document.getElementById("invalidName").classList.remove("invisible"); //displaying error message
+        invalidNameMessage.classList.remove("invisible"); //displaying error message
     }
     else {
-        document.getElementById("invalidName").classList.add("invisible"); //making the error text invisible
+        invalidNameMessage.classList.add("invisible"); //making the error text invisible
         document.getElementById("enterName").classList.add("invisible"); //making the name form invisible
         document.getElementById("userNameWallet").textContent = userName; //adding the name in the wallet form
 
@@ -31,12 +32,14 @@ function checkName() {
 
 function endRegistration() {
     var userWallet = parseFloat(document.getElementById("inputWallet").value);
+    var invalidWalletMessage = document.getElementById("invalidWallet");
+    var userName = localStorage.getItem("userName");
 
     if(!userWallet || userWallet < 0){
-        document.getElementById("invalidWallet").classList.remove("invisible");
+        invalidWalletMessage.classList.remove("invisible");
     }
     else {
-        document.getElementById("invalidWallet").classList.add("invisible");
+        invalidWalletMessage.classList.add("invisible");
         document.getElementById("enterWallet").classList.add("invisible");
 
         localStorage.setItem("userWallet", userWallet);
