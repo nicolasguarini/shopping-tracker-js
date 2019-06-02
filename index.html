@@ -72,7 +72,35 @@
         <div class="app invisible" id="app">
             <h3 style="padding-top: 20px;">Hi, <span id="userNameHeader"></span> </h3>
             <h1 id="userWalletHeader"></h1>
-            
+            <hr>
+
+            <!-- Message to display only if there isn't any payment-->
+            <div class="alert alert-primary invisible container" id="noPaymentYet" role="alert">
+                There is no payment yet!
+            </div>
+
+            <!-- List of transactions-->
+            <table class="table table-dark container" id="tableOfPayments">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Expense</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+
             <div class="actions">
                 <button type="button" class="btn btn-danger actions-btn" data-toggle="modal" data-target="#makeTransactionModal">
                     Make transaction

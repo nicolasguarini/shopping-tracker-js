@@ -6,6 +6,8 @@ userWallet = parseFloat(localStorage.getItem("userWallet")); //converting string
 document.getElementById("userNameHeader").textContent = userName; 
 document.getElementById("userWalletHeader").textContent = userWallet + "€";
 
+displayListOfPayments();
+
 function checkAddMoney() {
     userWallet = parseFloat(localStorage.getItem("userWallet")); //reloading the value
     var moneyToAdd = parseFloat(document.getElementById("inputAddMoney").value);
@@ -41,7 +43,6 @@ function checkMakeTransaction() {
     }
     else {
         //var payment = new Payment(amountOfMoney, selectedOption, today);
-        //console.log(payment.date);
         var payment = new Object();
         payment.price = amountOfMoney;
         payment.type = selectedOption;
@@ -62,4 +63,55 @@ function writeJSON(objToWrite) {
 
     paymentJSON = JSON.stringify(objToWrite);
     localStorage.setItem(nameOfPayment, paymentJSON);
+}
+
+function displayListOfPayments() {
+    var numberOfPayments = localStorage.getItem("numberOfPayments");
+    var tableOfPayments =  document.getElementById("tableOfPayments");
+
+    if(numberOfPayments < 1) {
+        tableOfPayments.classList.add("invisible");
+        document.getElementById("noPaymentYet").classList.remove("invisible");
+    }
+    else {
+        var arrayOfPayments = getJSONList(numberOfPayments);
+        var currentPayment;
+        var price, type, date; 
+
+        for(var i = 0; i<arrayOfPayments.length; i++) {
+            currentPayment = JSON.parse(arrayOfPayments[i]);
+            price = currentPayment.price;
+            type = currentPayment.type;
+            date = currentPayment.date;
+            addTableRow("tableOfPayments", i,  price, type, date);
+        }
+    }
+}
+
+function getJSONList(numberOfPayments) {
+    var currentName;
+    var arrayOfPayments = new Array();
+
+    for(var i = 0; i<numberOfPayments; i++) {
+        currentName = "payment" + i;
+        arrayOfPayments[i] = localStorage.getItem(currentName);
+    }
+
+    return arrayOfPayments;
+}
+
+
+function addTableRow(tableID, number, price, type, date) {
+    var table = document.getElementById(tableID);
+
+    var row = table.insertRow(number+1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+
+    cell1.innerHTML = number + 1;
+    cell2.innerHTML = price;
+    cell3.innerHTML = type;
+    cell4.innerHTML = date;
 }
