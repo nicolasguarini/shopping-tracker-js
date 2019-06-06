@@ -74,7 +74,7 @@ function displayListOfPayments() {
         document.getElementById("noPaymentYet").classList.remove("invisible");
     }
     else {
-        var arrayOfPayments = getJSONList(numberOfPayments);
+        var arrayOfPayments = getJSONArray(numberOfPayments);
         var currentPayment;
         var price, type, date; 
 
@@ -88,7 +88,7 @@ function displayListOfPayments() {
     }
 }
 
-function getJSONList(numberOfPayments) {
+function getJSONArray(numberOfPayments) {
     var currentName;
     var arrayOfPayments = new Array();
 
@@ -111,7 +111,7 @@ function addTableRow(tableID, number, price, type, date) {
     var cell4 = row.insertCell(3);
 
     cell1.innerHTML = number + 1;
-    cell2.innerHTML = price;
+    cell2.innerHTML = price + '€';
     cell3.innerHTML = type;
     cell4.innerHTML = date;
 }

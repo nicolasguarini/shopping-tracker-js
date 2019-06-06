@@ -1,6 +1,7 @@
 /* General CSS */
 body{
     text-align: center;
+    overflow-x: hidden;
 }
 
 .container {
@@ -16,7 +17,7 @@ body{
 
 /* Actions */
 .actions {
-    position: absolute;
+    position: fixed;
     bottom: 0%;
     width: 100%;
     height: 70px;
