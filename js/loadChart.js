@@ -1,4 +1,5 @@
 var numberOfPayments = localStorage.getItem("numberOfPayments");
+
 if(numberOfPayments) {
     // Load google charts
     google.charts.load('current', {'packages':['corechart']});
@@ -6,41 +7,41 @@ if(numberOfPayments) {
 } else {
     document.getElementById("piechart").classList.add("invisible");
 }
-var a = getChartData();
-//console.log(getChartData());
+
+
 // Draw the chart and set the chart values
 function drawChart() {
     var data = google.visualization.arrayToDataTable(getChartData());
 
-  // Optional; add a title and set the width and height of the chart
-  var options = {'width':600, 'height':400};
+    // Optional; add a title and set the width and height of the chart
+    var options = {'width':600, 'height':400};
 
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-  chart.draw(data, options);
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
 }
 
 function getChartData() {
-    var chartData = new Array();
-    chartData = [
+    var chartData = [
         ['Category', 'Expense']
     ];
-    var objectsArray = getObjectsFromJSON();
+    var objectsArray = getObjectsFromJSON(getJSONArray(localStorage.getItem("numberOfPayments")));
 
     for(var i = 0; i<objectsArray.length; i++) {
-        chartData[i+1] = [objectsArray[i].type, parseFloat(objectsArray[i].price)];
+        var index = checkIfIsPresent(chartData, objectsArray[i].type);
+
+        if(index != null)   
+            chartData[index][1] += objectsArray[i].price; //adding the price of the current element to the already existing category
+        else 
+            chartData[chartData.length] = [objectsArray[i].type, parseFloat(objectsArray[i].price)]; //adding a new array to 'chartData' because the category is not already present
     }
-    return chartData;
+
+    return chartData; //returning a clean array of array with the right informations
 }
 
-function getObjectsFromJSON() { // TODO: I have to group toghether the expenses with the same type. It's fucking hard, i know :()
-    var JSONArray = getJSONArray(numberOfPayments);
-    var objectsArray = new Array();
-    var currentObject;
-    
-    for(var i = 0; i<JSONArray.length; i++) {
-        currentObject = JSON.parse(JSONArray[i]);
-        objectsArray[i] = currentObject;
-    }
-    return objectsArray;
+function checkIfIsPresent(array, stringToCheck) {
+    for (var i = 0; i<array.length; i++)    if(array[i][0] == stringToCheck) return i;
+
+    //if the string is present will be returned the index of it, if not, will be returned null
+    return null; 
 }

@@ -2,6 +2,7 @@
 body{
     text-align: center;
     overflow-x: hidden;
+    padding-bottom: 50px;
 }
 
 .container {
