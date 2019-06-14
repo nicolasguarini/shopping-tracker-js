@@ -8,7 +8,7 @@ document.getElementById("userWalletHeader").textContent = userWallet + "€";
 
 displayListOfPayments();
 
-function checkAddMoney() {
+function checkAddMoney() { //this function checks if the value entered is good, and if it the value will be saved, otherwise will display an error message
     userWallet = parseFloat(localStorage.getItem("userWallet")); //reloading the value
     var moneyToAdd = parseFloat(document.getElementById("inputAddMoney").value);
     var errorMessage = document.getElementById("invalidAddMoney");
@@ -24,7 +24,7 @@ function checkAddMoney() {
     }
 }
 
-function checkMakeTransaction() {
+function checkMakeTransaction() { //this function checks if the values entered is good, and if it the payment will be saved, otherwise will display an error message
     var amountOfMoney = parseFloat(document.getElementById("inputMakeTransaction").value);
     var elSelectTypeOfPayment = document.getElementById("typeOfPayments");
     var selectedOption = elSelectTypeOfPayment.options[elSelectTypeOfPayment.selectedIndex].value;
@@ -33,15 +33,15 @@ function checkMakeTransaction() {
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     
-    today = mm + '/' + dd + '/' + yyyy;
+    today = mm + '/' + dd + '/' + yyyy; //the date will be saved in this format. ES: 08/30/2019
 
-    if(amountOfMoney < 0 || !amountOfMoney || selectedOption == "default") {
+    if(amountOfMoney < 0 || !amountOfMoney || selectedOption == "default") { //invalid values
         errorMessage.classList.remove("invisible");
     }
-    else {
+    else { //payment can be saved
         //var payment = new Payment(amountOfMoney, selectedOption, today);
         var payment = new Object();
         payment.price = amountOfMoney;
@@ -69,26 +69,33 @@ function displayListOfPayments() {
     var numberOfPayments = localStorage.getItem("numberOfPayments");
     var tableOfPayments =  document.getElementById("tableOfPayments");
 
-    if(numberOfPayments < 1) {
+    if(numberOfPayments < 1) { //there's no payment yet, will be displayed a message
         tableOfPayments.classList.add("invisible");
         document.getElementById("noPaymentYet").classList.remove("invisible");
     }
     else {
-        var arrayOfPayments = getJSONArray(numberOfPayments);
-        var currentPayment;
-        var price, type, date; 
+        var arrayOfPayments = getObjectsFromJSON(getJSONArray(numberOfPayments));
 
         for(var i = 0; i<arrayOfPayments.length; i++) {
-            currentPayment = JSON.parse(arrayOfPayments[i]);
-            price = currentPayment.price;
-            type = currentPayment.type;
-            date = currentPayment.date;
+            price = arrayOfPayments[i].price;
+            type = arrayOfPayments[i].type;
+            date = arrayOfPayments[i].date;
             addTableRow("tableOfPayments", i,  price, type, date);
         }
     }
 }
 
-function getJSONArray(numberOfPayments) {
+function getObjectsFromJSON(JSONArray) { //this function converts the JSON strings in JS Objects
+    var objectsArray = new Array();
+
+    for(var i = 0; i<JSONArray.length; i++) {
+        objectsArray[i] = JSON.parse(JSONArray[i]);
+    }
+
+    return objectsArray;
+}
+
+function getJSONArray(numberOfPayments) { //this returns an array of JSON strings that represents the payments did
     var currentName;
     var arrayOfPayments = new Array();
 
@@ -101,7 +108,7 @@ function getJSONArray(numberOfPayments) {
 }
 
 
-function addTableRow(tableID, number, price, type, date) {
+function addTableRow(tableID, number, price, type, date) { 
     var table = document.getElementById(tableID);
 
     var row = table.insertRow(number+1);
