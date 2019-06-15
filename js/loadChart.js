@@ -1,11 +1,11 @@
 var numberOfPayments = localStorage.getItem("numberOfPayments");
 
-if(numberOfPayments) {
+if(!numberOfPayments || numberOfPayments == 0) {
+    document.getElementById("piechart").classList.add("invisible");
+} else {
     // Load google charts
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-} else {
-    document.getElementById("piechart").classList.add("invisible");
 }
 
 
@@ -14,7 +14,7 @@ function drawChart() {
     var data = google.visualization.arrayToDataTable(getChartData());
 
     // Optional; add a title and set the width and height of the chart
-    var options = {'width':600, 'height':400};
+    var options = {'width':"600vh", 'height':400};
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));

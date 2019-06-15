@@ -4,10 +4,10 @@ function init() {
     var numberOfPayments = localStorage.getItem("numberOfPayments");
     var userRegistrationElement = document.getElementById("userRegistration");
     
-    if(!numberOfPayments){ 
+    if(!numberOfPayments || numberOfPayments == 0){ 
         localStorage.setItem("numberOfPayments", 0);
         document.getElementById("piechart").classList.add("invisible"); 
-
+    }
     if(userName && userWallet) { //going straight to the app bypassing the registration
         userRegistrationElement.classList.add("invisible");
         document.getElementById("app").classList.remove("invisible");
