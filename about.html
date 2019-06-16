@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About section of the Shopping Tracker App">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About | Shopping Tracker</title>
+
+    <!--GOOGLE ANALYTICS-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139090673-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-139090673-3');
+    </script>
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Shopping Tracker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 30px; text-align: center;">
+        <h1 style="font-size: 30px">About Shopping Tracker</h1>
+        <p>
+            Shopping Tracker is a web app where you can keep track of your expenses and see a graph of them. <br>
+            Shopping Tracker is built with pure JavaScript from scratch, and the pie graph is made by Google. <br>
+            This is a front-end application, so all user data is stored locally on the user's device.<br><br> You can decide to delete all saved data by clicking <a href="" style="color: red;" onClick="clearUserData();">here</a>.<br><br>
+            This project is open-source and the code is on <a href="https://github.com/nicolasguarini/shopping-tracker-js" >github</a>
+        </p>
+    </div>
+
+
+    <footer class="footer mt-auto py-3" style="background-color: #343A40; position: absolute; bottom: 0%; width: 100%; text-align: center;">
+        <div class="container">
+            <span class="text-muted">Developed by Nicolas Guarini | Visit my <a href="https://github.com/nicolasguarini/" style="color: #FFF8ED;">github</a></span>
+        </div>
+    </footer>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- My custom JS -->
+    <script src="js/about.js"></script>
+</body>
+</html>
